@@ -4,9 +4,7 @@ import sys
 
 import PIL
 # My library
-# sys.path.append('../src/')
-# sys.path.append('../images/')
-import network_class
+sys.path.append('../content/Earth_Images_Dataset')
 
 # Third-party libraries
 import numpy as np
@@ -71,7 +69,7 @@ def get_train_images():
 def get_test_images():
 
     # CHANGE
-    myFileList = createFileList_test('/content/Deep_Project_Dataset/test_aug')
+    myFileList = createFileList_test('/content/Earth_Images_Dataset/test_aug')
     basewidth = 320
     test_elements_generated = []
     for file in myFileList:
