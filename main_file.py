@@ -4,8 +4,8 @@ import sys
 
 import PIL
 # My library
-sys.path.append('../content/Earth_Images_Dataset')
-
+sys.path.append('/content/Earth_Images_Dataset')
+import network_class
 # Third-party libraries
 import numpy as np
 
@@ -63,7 +63,8 @@ def get_train_images():
         value = value.flatten()
 
         train_elements_generated.append(list(value))
-
+    print('Train Images Loaded')
+    print(len(train_elements_generated))
     return (np.asarray(train_elements_generated))
 
 def get_test_images():
@@ -95,7 +96,7 @@ def get_test_images():
         value = value.flatten()
         test_elements_generated.append(list(value))
 
-    print('I am here')
+    print('Test Images Loaded')
     print(len(test_elements_generated))
     return (np.asarray(test_elements_generated))
 
@@ -123,10 +124,10 @@ def load_data():
 
     # Get the testing Images
     test_data_ndarray = get_test_images()
-    print('Test Images Loaded')
+    
 
     # Get the testing Labels
-    with open('new_test_labels_project.csv', newline='') as f2:
+    with open('/content/Earth_Images_Dataset/new_test_labels_project.csv', newline='') as f2:
         l2 = list(csv.reader(f2))
     elements_2 = []
     for sub_list_2 in l2:
@@ -141,7 +142,7 @@ def load_data():
     train_data_ndarray = get_train_images()
 
     # Get the training labels
-    with open('new_train_labels_project_aug.csv', newline='') as f2:
+    with open('/content/Earth_Images_Dataset/new_train_labels_project_aug.csv', newline='') as f2:
         l2 = list(csv.reader(f2))
     elements_2 = []
     for sub_list_2 in l2:
@@ -149,7 +150,7 @@ def load_data():
             temp = int(element)
             elements_2.append(temp)
     train_labels_ndarray = np.array(elements_2)
-
+    print('Train Labels Loaded')
     training_data = (train_data_ndarray, train_labels_ndarray)
 
     return (training_data, test_data)
